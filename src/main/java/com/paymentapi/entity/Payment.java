@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 
 @Entity
@@ -28,6 +29,9 @@ public class Payment {
 
     @Column(name = "to_account", nullable = false)
     private Long toAccount;
+
+    @Column(name = "amount", nullable = false, precision = 19, scale = 2)
+    private BigDecimal amount;
 
     @Column(name = "payment_date", nullable = false)
     private Instant date;
@@ -69,6 +73,14 @@ public class Payment {
 
     public void setToAccount(Long toAccount) {
         this.toAccount = toAccount;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
     public Instant getDate() {

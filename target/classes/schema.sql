@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS payments (
     idempotency_key  VARCHAR(255) NOT NULL UNIQUE,
     from_account     BIGINT NOT NULL,
     to_account       BIGINT NOT NULL,
+    amount           DECIMAL(19, 2) NOT NULL,
     payment_date     TIMESTAMP NOT NULL,
     status           VARCHAR(50) NOT NULL,
     CONSTRAINT fk_payments_from_account FOREIGN KEY (from_account) REFERENCES accounts (account_id),

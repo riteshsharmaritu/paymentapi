@@ -1,8 +1,11 @@
 package com.paymentapi.controller;
 
+import com.paymentapi.dto.PaymentRequest;
+import com.paymentapi.dto.PaymentResponse;
 import com.paymentapi.service.PaymentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,8 +20,8 @@ public class PaymentController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createPayment() {
-        // Request handling will be added here
-        return ResponseEntity.ok().build();
+    public ResponseEntity<PaymentResponse> createPayment(@RequestBody PaymentRequest request) {
+        PaymentResponse response = paymentService.processPayment(request);
+        return ResponseEntity.ok(response);
     }
 }
